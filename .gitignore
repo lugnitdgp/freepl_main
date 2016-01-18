@@ -1,0 +1,14 @@
+db.sqlite3
+*/__pycache__
+.venv
+*.pyc
+
+
+# IDE files
+.idea/*
+*~
+*.sw?
+
+# Local configuration files
+localconf.py
+
