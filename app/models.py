@@ -31,8 +31,8 @@ class Player(models.Model):
     class Meta:
         db_table = 'player'
 
-    name = models.TextField(max_length=10, default="")
-    country = models.TextField(max_length=10, default="")
+    name = models.TextField(max_length=30, default="")
+    country = models.TextField(max_length=100, default="")
     cost = models.IntegerField(default=0)
     role = models.TextField(max_length=25,default="")
 
@@ -46,3 +46,17 @@ class PlayertoMatch(models.Model):
 
     def __str__(self):
         return self.player.name + "for the match " + self.match.country1 + 'vs' + self.match.country2 + "scored : " + str(self.score)
+
+class PersontoPM(models.Model):
+    class Meta:
+        db_table = 'person_PM'
+
+    person = models.ForeignKey(Person)
+    pm = models.ForeignKey(PlayertoMatch)
+    power_player = models.BooleanField(default=False)
+
+admin.site.register(Player)
+admin.site.register(Person)
+admin.site.register(PersontoPM)
+admin.site.register(Match)
+admin.site.register(PlayertoMatch)
