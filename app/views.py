@@ -34,14 +34,23 @@ def index(request):
         return HttpResponseRedirect('/matches')
     return render(request, 'index_page.html', {})
 
+@login_required
 def matches(request):
     matches = Match.objects.all()
     return render(request,'matches.html',{'matches':matches})
 
+@login_required
 def create_team(request,id):
     match = get_object_or_404(Match, pk=id)
     all_players = Player.objects.filter(country = match.country1) + Player.objects.filter(country = match.country2)
     print (match.country1)
     if request.method == 'GET':
-        return render(request,'',{'players': all_players })
+        return render(request,'create_team.html',{'players': all_players })
+    else:
+        return
     return
+
+def leaderboard(request):
+    persons = Person.objects.all()
+    persons.sort(key = lambda x : x.score, reverse=True)
+    return render(request,'leaderboard.html',{'persons': persons})
