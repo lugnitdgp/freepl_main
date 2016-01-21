@@ -54,6 +54,7 @@ class PersontoPM(models.Model):
     person = models.ForeignKey(Person)
     pm = models.ForeignKey(PlayertoMatch)
     power_player = models.BooleanField(default=False)
+    score = models.IntegerField(default=0)
 
 admin.site.register(Player)
 admin.site.register(Person)

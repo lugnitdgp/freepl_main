@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block body %}
+<div id="background-image"></div>
+<div id="background-texture"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+    	<h1 id="mainHeader">Freemex</h1>
+
+    	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+    	<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
+    		<button class="loginbutton" id="fbLogin">
+    		<img src="{% static "images/fb.png" %}">
+    		Login with Facebook
+    		</button>
+    	</a>
+    	</div>
+
+    	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+		<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
+			<button class="loginbutton" id="googleLogin">
+			<img src="{% static "images/google.png" %}">
+    		Login with Google
+			</button>
+		</a>
+		</div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

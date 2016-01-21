@@ -39,6 +39,9 @@ def matches(request):
     matches = Match.objects.all()
     return render(request,'matches.html',{'matches':matches})
 
+"""TODO : Create a new python script to populate the database
+ for players as well as matches, also player to match so that we dont have to do it here """
+
 @login_required
 def create_team(request,id):
     match = get_object_or_404(Match, pk=id)
@@ -47,6 +50,8 @@ def create_team(request,id):
     if request.method == 'GET':
         return render(request,'create_team.html',{'players': all_players })
     else:
+        person = Person.objects.get(user_id = request.user.pk)
+
         return
     return
 
