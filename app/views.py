@@ -36,8 +36,8 @@ def index(request):
 
 @login_required
 def matches(request):
-    matches = Match.objects.all()
-    return render(request,'matches.html',{'matches':matches})
+    all_matches = Match.objects.all()
+    return render(request,'matches.html',{'matches':all_matches})
 
 """TODO : Create a new python script to populate the database
  for players as well as matches, also player to match so that we dont have to do it here """

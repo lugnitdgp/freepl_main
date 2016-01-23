@@ -1,0 +1,131 @@
+body{
+    background-color: #F9F9F9   ;
+}
+
+
+nav .nav-wrapper {
+
+    background-color: cornflowerblue;
+}
+
+
+.card{
+    background-color: #ffffff !important;
+}
+
+.match_heading
+{
+    font-family: 'Lato', sans-serif;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+    color: #8b8888;
+}
+
+.math_info
+{
+
+}
+
+.india
+{
+    font-family: 'Lato', sans-serif;
+    color: #66bac3;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.aus{
+    font-family: 'Lato', sans-serif;
+    color: #bcc842;
+    font-weight: 800;
+    font-size: 30px;
+}
+.vs
+{
+    font-family: 'Lato', sans-serif;
+    color: #949894;
+    font-size: 20px;
+    margin-left: 10px;
+    font-weight: 800;
+    margin-right: 10px;
+}
+
+.date{
+    float: right;
+    margin-right: 40px;
+    display: inline;
+    line-height: 50px;
+    font-family: 'Ubuntu', serif;
+    font-size: 16px;
+    color: #7d7d7d;
+    font-weight: 600;
+}
+
+.extra{
+    font-family: 'Ubuntu', serif;
+    font-size: 20px!important;
+    color: #70746c;
+    background-color: #bdf4e4 !important;
+    font-weight: 600;
+}
+
+.custom_reveal
+{
+    color: #00695c !important;
+}
+
+
+.nz
+{
+    font-family: 'Lato', sans-serif;
+    color: #504f52;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.pak{
+    font-family: 'Lato', sans-serif;
+    color: #6db144;
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.hk
+{
+    font-family: 'Lato', sans-serif;
+    color: #ac514e;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.scot{
+    font-family: 'Lato', sans-serif;
+    color: #6f71b1;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+
+.extra2{
+    font-family: 'Ubuntu', serif;
+    font-size: 20px!important;
+    color: #70746c;
+    background-color: #c3d1f4 !important;
+    font-weight: 600;
+}
+
+.extra3{
+    font-family: 'Ubuntu', serif;
+    font-size: 20px!important;
+    color: #70746c;
+    background-color: #eff4a3 !important;
+    font-weight: 600;
+}
+
+.extra4{
+    font-family: 'Ubuntu', serif;
+    font-size: 20px!important;
+    color: #70746c;
+    background-color: #91f48c !important;
+    font-weight: 600;
+}

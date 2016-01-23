@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block body %}
+
+<div class="container">
+
+{% for i in matches %}
+    <div class="row">
+        <div class="s12">
+            <div class="card">
+                <div class="card-content">
+            <span class="card-title activator match_heading">Match 1<i
+                    class="material-icons right">more_vert</i></span>
+
+                    <div class="match_info">
+                        <span class="nz">{{ i.country1 }}</span><span class="vs">Vs</span><span class="pak">{{ i.country2 }}</span>
+
+                        <div class="date">Thursday, 28th January</div>
+                    </div>
+
+                </div>
+                <div class="card-reveal extra">
+                <span class="card-title match_heading"><i
+                        class="material-icons right custom_reveal">close</i></span>
+
+                    <div class="match_info_reveal">
+                        2nd ODI, {{ i.country1 }} v {{ i.country1 }} 2016<br>
+                        McLean Park, Napier, 01:00 GMT / 06:00 Local
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+{% endblock %}

@@ -12,7 +12,16 @@
       <!-- Bootstrap -->
       <link href="{% static "css/bootstrap.min.css" %}" rel = "stylesheet" />
       <link href="{% static "css/main.css" %}" rel = "stylesheet" />
-
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/matches.css" media="screen,projection"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
@@ -24,7 +33,24 @@
    </head>
 
    <body>
+      <ul id="dropdown1" class="dropdown-content">
+    <li><a href="#">one</a></li>
+    <li><a href="#">two</a></li>
+    <li><a href="#">three</a></li>
+</ul>
 
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">&nbsp;&nbsp;FREEPL</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">Link1</a></li>
+                <li><a href="#">Link2</a></li>
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
       {% block body %}<h1>Hello, world!</h1>{% endblock %}
 
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

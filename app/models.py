@@ -36,6 +36,9 @@ class Player(models.Model):
     cost = models.IntegerField(default=0)
     role = models.TextField(max_length=25,default="")
 
+    def __str__(self):
+        return self.name
+
 class PlayertoMatch(models.Model):
     class Meta:
         db_table = 'PlayertoMatch'
