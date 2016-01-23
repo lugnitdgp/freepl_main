@@ -45,10 +45,14 @@ def matches(request):
 @login_required
 def create_team(request,id):
     match = get_object_or_404(Match, pk=id)
-    all_players = Player.objects.filter(country = match.country1) + Player.objects.filter(country = match.country2)
+    all_players = []
+    for i in Player.objects.filter(country = match.country1):
+        all_players.append(i)
+    for i in Player.objects.filter(country = match.country2):
+        all_players.append(i)
     print (match.country1)
     if request.method == 'GET':
-        return render(request,'create_team.html',{'players': all_players })
+        return render(request,'create_team.html',{'players': all_players, 'id':id })
     else:
         person = Person.objects.get(user_id = request.user.pk)
 

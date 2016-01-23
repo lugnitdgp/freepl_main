@@ -1,3 +1,138 @@
-{% for i in players %}
-{{ i.country }} {{ i.name }} {{ i.role }} {{ i.cost }}
-{% endfor %}
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block body %}
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	var favorite = [];
+	var ctr=0;
+	function butt() {
+
+		 if(ctr!=11)
+
+		 {
+               alert("Pls select 11 players");
+
+		 }
+   else{
+		  favorite=[];
+		  var select = document.getElementById("selectNumber");
+while (select.firstChild) {
+    select.removeChild(select.firstChild);
+}
+				$.each($("input[name='sport']:checked"), function(){
+            	var a = $(this).val();
+            	var b=jQuery.inArray(a,favorite)
+            	console.log(favorite)
+            	if (parseInt(b)<0) {
+            		favorite.push(a);
+
+				}
+var select = document.getElementById("selectNumber");
+while (select.firstChild) {
+    select.removeChild(select.firstChild);
+}
+for(var i = 0; i < favorite.length; i++) {
+    var opt = favorite[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+            	}
+            });
+				$("#myModal").modal("show");
+          }
+	}
+	function calc()
+{
+	b=700;
+	ctr=0;
+	var cbs    = document.getElementsByName('sport');
+	var cbc    = document.getElementsByName('xxx');
+
+        for(var i=0; i<cbs.length; i++) {
+         if(cbs[i].checked){
+         	var a=cbc[i].value;
+         	a=parseInt(a);
+         	ctr++;
+         	b=b-a;
+         	if(b<0)
+         	{
+         		cbs[i].checked=false;
+         		b=b+a;
+         		alert("Budget Insufficient");
+
+
+         	}
+         }
+
+        }
+        document.getElementById('budget').innerHTML = b;
+
+
+}
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<form action="/match/id" method="POST">
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Create Team</div>
+  <div class="panel-body">
+  	<div  style="float:right;">
+    <p>Budget: <div id="budget">700</div></p>
+    </div>
+  </div>
+
+  <!-- Table -->
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Player Name</th>
+			<th>Country</th>
+			<th>Role</th>
+			<th>Cost</th>
+		</tr>
+	</thead>
+	<tbody>
+    {% for i in players %}
+		<tr>
+			<th scope="row"><input type="checkbox" id='cost' value="{{ i.name }}"name="sport" onclick="calc();"></th>
+			<td>{{ i.name }}</td>
+			<td>{{ i.country }}</td>
+			<td>{{ i.role }}</td>
+			<input type="hidden"  name='xxx'  value="{{ i.cost }}" />
+			<td>{{ i.cost }}</td>
+		</tr>
+    {% endfor %}
+	</tbody>
+</table>
+</div>
+
+<br>
+  <button type="button" onClick="butt()" class="btn btn-info btn-lg" data-toggle="modal" >Get Values</button>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Power Player</h4>
+        </div>
+        <div class="modal-body">
+	<select id="selectNumber" name="captain">
+    <option>Choose a captain</option>
+</select>
+        </div>
+        <div class="modal-footer">
+          <input type="submit" name="submit" class="btn btn-default" />
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+{% endblock %}
