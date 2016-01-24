@@ -33,20 +33,18 @@
    </head>
 
    <body>
-      <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#">one</a></li>
-    <li><a href="#">two</a></li>
-    <li><a href="#">three</a></li>
-</ul>
-
-<div class="navbar-fixed">
+      <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">&nbsp;&nbsp;FREEPL</a>
+            <span class="brand-logo">&nbsp;FreePL</span>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#">Link1</a></li>
-                <li><a href="#">Link2</a></li>
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                {% if user and not user.is_anonymous %}
+                <li>Hello {{ user.get_full_name|default:user.username }}</li>
+                {% endif %}
+                <li><a href="/matches">All Matches</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/rules">Rules</a></li>
+
             </ul>
         </div>
     </nav>
