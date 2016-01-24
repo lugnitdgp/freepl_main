@@ -54,9 +54,61 @@ def create_team(request,id):
     if request.method == 'GET':
         return render(request,'create_team.html',{'players': all_players, 'id':id })
     else:
+        if match.can_edit == False:
+            return
         person = Person.objects.get(user_id = request.user.pk)
-
-        return
+        print (request.POST)
+        players = request.POST.getlist('sport')
+        captain = request.POST['captain']
+        player_class = []
+        bats=0
+        bowl=0
+        wk=0
+        allr=0
+        c1=0
+        c2=0
+        money = 0
+        for i in players:
+            p=Player.objects.get(name=i)
+            player_class.append(p)
+            money+=p.cost
+            if p.role == 'Batsman': bats+=1
+            elif p.role == 'AllRounder': allr+=1
+            elif p.role == 'WicketKeeper': wk+=1
+            elif p.role =='Bowler': bowl+=1
+            if p.country == match.country1: c1+=1
+            else: c2+=1
+        if bats<4:
+            messages.error(request, "You should choose a minimum of 4 batsmen")
+            return render(request,'create_team.html',{'players': all_players, 'id':id })
+        elif allr<2:
+            messages.error(request, "You should choose a minimum of 2 all rounders")
+            return render(request,'create_team.html',{'players': all_players, 'id':id })
+        elif wk!=1:
+            messages.error(request, "You should choose exactly 1 wicket keeper")
+            return render(request,'create_team.html',{'players': all_players, 'id':id })
+        elif bowl<2:
+            messages.error(request, "You should choose a minimum of 2 bowlers")
+            return render(request,'create_team.html',{'players': all_players, 'id':id })
+        elif c1>6 or c2>6:
+            messages.error(request, "You can choose only a maximum of 6 players from one team")
+            return render(request,'create_team.html',{'players': all_players, 'id':id })
+        elif money>700:
+            messages.error("Dude. Don't flatter yourself. You aren't that smart.")
+            return render(request,'create_team.html',{'players': all_players, 'id':id })
+        #remove all existing entries
+        person2p2m = PersontoPM.objects.filter(person=person, pm__match = match)
+        for i in person2p2m:
+            i.delete()
+        for i in player_class:
+            m=PlayertoMatch.objects.get(match=match, player=i)
+            if i.name == captain:
+                val=True
+            else:
+                val=False
+            p=PersontoPM(person=person, pm = m, power_player = val)
+            p.save()
+        return HttpResponseRedirect('/matches')
     return
 
 def leaderboard(request):

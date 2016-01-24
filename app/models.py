@@ -23,9 +23,10 @@ class Match(models.Model):
     country1 = models.TextField(max_length=100, default="")
     country2 = models.TextField(max_length=100, default="")
     day = models.DateField(default=datetime.datetime.today())
+    can_edit = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.country1
+        return self.country1 + ' vs ' + self.country2
 
 class Player(models.Model):
     class Meta:
@@ -58,6 +59,9 @@ class PersontoPM(models.Model):
     pm = models.ForeignKey(PlayertoMatch)
     power_player = models.BooleanField(default=False)
     score = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.person.name + ' ' + self.pm.match.__str__() + ' ' + self.pm.player.name
 
 admin.site.register(Player)
 admin.site.register(Person)
