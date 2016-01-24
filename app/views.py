@@ -112,6 +112,9 @@ def create_team(request,id):
     return
 
 def leaderboard(request):
-    persons = Person.objects.all()
-    persons.sort(key = lambda x : x.score, reverse=True)
+    persons = list(Person.objects.all())
+    persons.sort(key = lambda x : x.total_score, reverse=True)
     return render(request,'leaderboard.html',{'persons': persons})
+
+def rules(request):
+    return render(request,'rules.html',{})

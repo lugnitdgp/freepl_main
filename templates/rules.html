@@ -9,7 +9,7 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Leaderboard</title>
+    <title>Rules</title>
     <style>
         body{
             background-color: #F3F3F3;
@@ -80,17 +80,95 @@
 
             <div class="page-header">
                 <br>
-                 <img src="/static/img/img.png" alt="Smiley face" height="70" width="70"> <div class="rules">Leaderboard</div>
+                <i class="large material-icons">info_outline</i><div class="rules">Rules</div>
             </div>
             <div class="card">
                 <div class="card-content">
-                    {% for i in persons %}
+
 			<div class="card hoverable">
 				<div class="card-content">
-				<p class="flow-text">{{ i.name }}  {{ i.total_score }}</p>
+				<p class="flow-text">This is a Fantasy Cricket League. We will be hosting matches mirroring the matches that are taking place live around the world.
+                    All you have to do is to select the team you would choose amongst the 22+ players participating in the match.
+                    You would be then allotted points on the basis of how the players actually performed</p>
 				</div>
 			</div>
-                {% endfor %}
+            <div class="card hoverable">
+				<div class="card-content">
+				<p class="flow-text">You have to select a minimum of 4 Batsmen, 2 Bowlers, 2 All Rounders and exactly 1 wicketkeeper. You must also choose a team captain, whose end points will be doubled.</p>
+				</div>
+			</div>
+            <div class="card hoverable">
+				<div class="card-content">
+				<p class="flow-text"><h3>Batting Points</h3>
+<table class="rulestable">
+<tr>
+<td>Base Score</td>
+<td>1 point per run.</td>
+</tr>
+<tr>
+<td>Impact Score</td>
+<td>2 points per six, -5 for a duck.</td>
+</tr>
+<tr>
+<td>Milestone Score</td>
+<td>10 points for every 25 runs scored. </td>
+</tr>
+<tr>
+<td>Pace Bonus </td>
+<td> Runs Scored – Balls faced. </td>
+</tr>
+</table>
+<h3>Bowling Points</h3>
+<table class="rulestable">
+<tr>
+<td>Base Score</td>
+<td>20 points per wicket.</td>
+</tr>
+<tr>
+<td>Impact Score</td>
+<td>1 point per dot ball, 20 points for a maiden over.</td>
+</tr>
+<tr>
+<td>Milestone Score</td>
+<td> 10 points for each subsequent wicket. </td>
+</tr>
+<tr>
+<td>Pace Bonus </td>
+<td> Balls bowled – Runs conceded. If positive, then it is doubled. </td>
+</tr>
+</table>
+<h3> Fielding Points </h3>
+<table class="rulestable">
+<tr>
+<td>Catch</td>
+<td>10 points </td>
+</tr>
+<tr>
+<td>Stumping </td>
+<td> 15 points </td>
+</tr>
+<tr>
+<td> Run Out</td>
+<td> 10 points for each player involved. </td>
+</tr>
+</table>
+<h3> Bonus Points </h3>
+<table class="rulestable">
+<tr>
+<td>Player of the Match</td>
+<td> 25 points </td>
+</tr>
+<tr>
+<td> The points of your captain gets doubled </td>
+</tr>
+</table></p>
+				</div>
+			</div>
+                    <div class="card hoverable">
+				<div class="card-content">
+				<p class="flow-text">Bring out the manager in you and play on to win prizes worth 5k+ and more!</p>
+				</div>
+			</div>
                 </div>
             </div>
 
