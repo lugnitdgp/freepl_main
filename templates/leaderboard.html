@@ -47,7 +47,16 @@
             font-weight: 300;
         }
 
-
+	th {
+    background-color: #4CAF50;
+    color: white;
+    }
+	th, td {
+    padding: 20px;
+    text-align: left;
+}
+    tr:nth-child(even) {background-color: #f2f2f2}
+}
 
     </style>
 
@@ -84,13 +93,27 @@
             </div>
             <div class="card">
                 <div class="card-content">
-                    {% for i in persons %}
+
 			<div class="card hoverable">
-				<div class="card-content">
-				<p class="flow-text">{{ i.name }}  {{ i.total_score }}</p>
-				</div>
+				<table>
+
+				<tr>
+					<th>rank</th>
+					<th>name</th>
+					<th>total score</th>
+
+				</tr>
+                    {% for i in persons %}
+                    <tr>
+					<td>{{ forloop.counter }}</td>
+					<td>{{ i.name }}</td>
+					<td>{{ i.total_score }}</td>
+				</tr>
+				{% endfor %}
+			</table>
 			</div>
-                {% endfor %}
+
+
                 </div>
             </div>
 
@@ -101,7 +124,7 @@
 </div>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="/static/js/materialize.min.js"></script>
 
 </body>
 </html>
