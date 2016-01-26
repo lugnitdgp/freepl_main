@@ -44,6 +44,9 @@
                 <li><a href="/matches">All Matches</a></li>
                 <li><a href="/leaderboard">Leaderboard</a></li>
                 <li><a href="/rules">Rules</a></li>
+                {% if user and not user.is_anonymous %}
+                <li> <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></li>
+                {% endif %}
 
             </ul>
         </div>
