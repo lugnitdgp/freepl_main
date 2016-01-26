@@ -4,12 +4,22 @@
 
 <div class="container">
 
+{% block msgblock %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">
+              {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endblock %}
+
 {% for i in matches %}
     <div class="row">
         <div class="s12">
             <div class="card">
                 <div class="card-content">
-            <a href = "match/{{ forloop.counter }}" class="card-title activator match_heading">Match {{ forloop.counter }}<i class="material-icons right">more_vert</i></a>
+            <a href = "/match/{{ forloop.counter }}" class="card-title activator match_heading">Match {{ forloop.counter }}<i class="material-icons right">more_vert</i></a>
 
                     <div class="match_info">
                         <span class="nz">{{ i.country1 }}</span><span class="vs">Vs</span><span class="pak">{{ i.country2 }}</span>

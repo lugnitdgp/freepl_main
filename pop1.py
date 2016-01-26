@@ -12,7 +12,7 @@ year,month,day=map(int,date_entry.split('-'))
 date1=datetime.date(year,month,day)
 
 print(c1,c2,date1)
-m=Match(country1=c1,country2=c2,day=date1)
+m=Match(country1=c1,country2=c2,day=date1,can_edit=True)
 m.save()
 
 for i in Player.objects.all():

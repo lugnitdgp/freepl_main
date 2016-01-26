@@ -11,4 +11,4 @@ db.sqlite3
 
 # Local configuration files
 localconf.py
-
+freepl_main.conf

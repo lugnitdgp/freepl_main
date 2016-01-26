@@ -1,0 +1,158 @@
+/*  CSS Document                             */
+
+@import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+
+body { background-color: #45180a;
+overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a { color: inherit; }
+
+@font-face {
+
+    font-family:headerFont2;
+    src: url(MANIFESTO.ttf);
+}
+.promo
+{
+    position: relative;
+    font-size: 16px;
+    font-family: "Droid Sans Mono", Helvetica, Arial, sans-serif;
+
+}
+
+.promo video
+{
+    width: 100%;
+    border: 0px solid white;
+    height: 100%;
+}
+
+.promo .caption
+{
+    position: absolute;
+    left: 1px;
+    bottom: 400px;
+    background-color: rgba(69, 24, 10, 0);
+    width: 100%;
+    height: 200px;
+    align-content: center;
+
+
+}
+.logo_facebook
+{
+    float: left;
+    height: 64px;
+    margin-left: 35%;
+    width:64px;
+    background-color: #F8F8FF;
+    border-radius: 2%;
+    margin-top: 50px;
+
+}
+
+.facebook
+{
+    width:30%;
+    height: 64px;
+    margin-left: 39%;
+    background-color: rgba(66, 69, 179, 0.65);
+    text-align: center;
+    line-height: 70px;
+    overflow: hidden;
+    margin-top: 50px;
+    transition: all 0.3s linear;
+    color: #c2c2c2;
+    font-weight: bold;
+    font-family: Ubuntu,sans-serif;
+
+}
+
+.facebook:hover
+{
+    background-color: rgb(66, 69, 179);
+}
+
+.logo_google
+{
+    float: left;
+    width: 65px;
+    background-color: #222222;
+    height: 64px;
+    margin-left: 35%;
+    margin-top: 10px;
+
+}
+video
+{
+    position: relative;
+    top: -60px;
+}
+
+.google
+{
+    width:30%;
+    height: 64px;
+    margin-left: 39%;
+    background-color: rgba(195, 48, 46, 0.67);
+    margin-top: 10px;
+    text-align: center;
+    line-height: 70px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+    color: #c2c2c2;
+    font-weight: bold;
+    font-family: Ubuntu,sans-serif;
+}
+.heading
+{
+    text-align: center;
+    font-size: 60px;
+    font-family: headerFont2;
+    color: #e9e9e9;
+    font-weight: 700;
+}
+
+.heading2
+{
+    text-align: center;
+    font-size: 40px;
+    font-family: headerFont2;
+    color: cornflowerblue;
+    font-weight: 900;
+    margin-top: 5px;
+}
+.google:hover
+{
+    background-color: rgb(195, 48, 46);
+}
+
+.promo .caption p{
+    font-size: 3em;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    color: white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+

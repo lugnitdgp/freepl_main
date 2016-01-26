@@ -94,7 +94,7 @@ def create_team(request,id):
             messages.error(request, "You can choose only a maximum of 6 players from one team")
             return render(request,'create_team.html',{'players': all_players, 'id':id })
         elif money>700:
-            messages.error("Dude. Don't flatter yourself. You aren't that smart.")
+            messages.error(request,"Dude. Don't flatter yourself. You aren't that smart.")
             return render(request,'create_team.html',{'players': all_players, 'id':id })
         #remove all existing entries
         person2p2m = PersontoPM.objects.filter(person=person, pm__match = match)
@@ -108,6 +108,7 @@ def create_team(request,id):
                 val=False
             p=PersontoPM(person=person, pm = m, power_player = val)
             p.save()
+        messages.success(request,"Your team has been selected")
         return HttpResponseRedirect('/matches')
     return
 

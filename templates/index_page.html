@@ -1,34 +1,38 @@
-{% extends "base.html" %}
 {% load static from staticfiles %}
-{% block body %}
-<div id="background-image"></div>
-<div id="background-texture"></div>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta id="view" name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1">
+    <title>Background Video</title>
+    <link rel="stylesheet" type="text/css" href="/static/assets/styles.css">
+</head>
+<body>
+<div class="promo">
+    <video autoplay="autoplay" muted="muted" loop="loop">
+        <source src="/static/assets/vid.mp4" type="video/mp4">
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-    	<h1 id="mainHeader">Freemex</h1>
+    </video>
 
-    	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-    	<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
-    		<button class="loginbutton" id="fbLogin">
-    		<img src="{% static "images/fb.png" %}">
-    		Login with Facebook
-    		</button>
-    	</a>
-    	</div>
 
-    	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-		<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
-			<button class="loginbutton" id="googleLogin">
-			<img src="{% static "images/google.png" %}">
-    		Login with Google
-			</button>
-		</a>
-		</div>
+    <div class="caption">
+        <div class="heading">FREEPL</div>
+        <div class="heading2">Log In To <span style="color: orange">P</span><span style="color: #f5f5f5">LA</span><span
+                style="color: #54c92d">Y</span></div>
+        <img src="/static/assets/facebook.png" class="logo_facebook" height="64" width="64">
+        <a href="{% url 'social:begin' 'facebook'%}?next={{ request.path }}">
+            <div class="facebook">
+                Log In With Facebook
+            </div>
+        </a>
 
+        <img src="/static/assets/google.png" height="64" width="64" class="logo_google">
+        <a href="{% url 'social:begin' 'google-oauth2'%}?next={{ request.path }}">
+            <div class="google">
+                Log In With Google
+            </div>
+        </a>
     </div>
-  </div>
 </div>
-
-{% endblock %}
+</body>
+</html>
