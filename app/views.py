@@ -59,7 +59,13 @@ def create_team(request,id):
         person = Person.objects.get(user_id = request.user.pk)
         print (request.POST)
         players = request.POST.getlist('sport')
+        if len(players)!=11:
+            messages.error(request, "You should choose exactly 11 players")
+            return render(request,'create_team.html',{'players': all_players, 'id':id })
         captain = request.POST['captain']
+        if captain not in players:
+            messages.error(request, "Don't try stupid stuff")
+            return render(request,'create_team.html',{'players': all_players, 'id':id })
         player_class = []
         bats=0
         bowl=0
