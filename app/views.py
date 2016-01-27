@@ -51,12 +51,14 @@ def create_team(request,id):
     for i in Player.objects.filter(country = match.country2):
         all_players.append(i)
     print (match.country1)
+    person = Person.objects.get(user_id = request.user.pk)
     if request.method == 'GET':
-        return render(request,'create_team.html',{'players': all_players, 'id':id })
+        if len(PersontoPM.objects.filter(person=person, pm__match=match))!=0:
+            messages.success(request,"You have already selected a team. If you select again, the previous team will be overwritten")
+        return render(request,'create_team.html',{'players': all_players, 'id':id, 'has_team':has_team })
     else:
         if match.can_edit == False:
             return
-        person = Person.objects.get(user_id = request.user.pk)
         print (request.POST)
         players = request.POST.getlist('sport')
         if len(players)!=11:
