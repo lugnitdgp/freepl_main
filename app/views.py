@@ -55,7 +55,7 @@ def create_team(request,id):
     if request.method == 'GET':
         if len(PersontoPM.objects.filter(person=person, pm__match=match))!=0:
             messages.success(request,"You have already selected a team. If you select again, the previous team will be overwritten")
-        return render(request,'create_team.html',{'players': all_players, 'id':id, 'has_team':has_team })
+        return render(request,'create_team.html',{'players': all_players, 'id':id })
     else:
         if match.can_edit == False:
             return
