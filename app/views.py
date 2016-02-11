@@ -45,6 +45,9 @@ def matches(request):
 @login_required
 def create_team(request,id):
     match = get_object_or_404(Match, pk=id)
+    if match.can_edit == False:
+            messages.error(request, "Match is locked. Cannot change players")
+            return HttpResponseRedirect('/matches')
     all_players = []
     for i in Player.objects.filter(country = match.country1):
         all_players.append(i)
@@ -55,11 +58,8 @@ def create_team(request,id):
     if request.method == 'GET':
         if len(PersontoPM.objects.filter(person=person, pm__match=match))!=0:
             messages.success(request,"You have already selected a team. If you select again, the previous team will be overwritten")
-        return render(request,'create_team.html',{'players': all_players, 'id':id })
+        return render(request,'create_team.html',{'players': all_players, 'id':id})
     else:
-        if match.can_edit == False:
-            return
-        print (request.POST)
         players = request.POST.getlist('sport')
         if len(players)!=11:
             messages.error(request, "You should choose exactly 11 players")
@@ -99,7 +99,7 @@ def create_team(request,id):
             messages.error(request, "You should choose a minimum of 2 bowlers")
             return render(request,'create_team.html',{'players': all_players, 'id':id })
         elif c1>6 or c2>6:
-            messages.error(request, "You can choose only a maximum of 6 players from one team")
+            messages.error(request, "You can choose only a maximum of 6 players from one country")
             return render(request,'create_team.html',{'players': all_players, 'id':id })
         elif money>700:
             messages.error(request,"Dude. Don't flatter yourself. You aren't that smart.")
@@ -127,3 +127,20 @@ def leaderboard(request):
 
 def rules(request):
     return render(request,'rules.html',{})
+
+@login_required
+def listTeams(request):
+    matches = Match.objects.all()
+    if request.method == 'GET':
+        return render(request,'listteams.html',{'matches': matches})
+    elif request.method == 'POST':
+        id = request.POST['id']
+        match=Match.objects.get(id=id)
+        print (match.country1)
+        person = Person.objects.get(user_id = request.user.pk)
+        players = PersontoPM.objects.filter(person=person, pm__match = match)
+        p=[]
+        for i in players:
+            p.append(i.pm.player)
+        p=list(p)
+        return render(request,"listteams.html",{'players':p, 'matches': matches})

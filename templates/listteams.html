@@ -1,0 +1,128 @@
+{% load static from staticfiles %}
+<html>
+<head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/matches.css" media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>View Squad</title>
+    <style>
+        body{
+            background-color: #F3F3F3;
+        }
+
+        i.large {
+            font-size: 6rem;
+            color: #9a92ed;
+            transition: color .3s linear;
+            cursor: pointer;
+        }
+        i.large:hover{
+            color: #4e56d6;
+        }
+        .page-header{
+            display: inline;
+        }
+
+        .rules{
+            margin-bottom: 20px;
+            display: inline;
+            position: relative;
+            bottom: 30px;
+            font-size: 25px;
+        }
+
+        .card-content
+        {
+            font-size: 16px;
+        }
+        .flow-text{
+            font-family: Ubuntu,sans-serif;
+            color: #707070 !important;
+            text-indent: 2%;
+            font-weight: 300;
+        }
+
+	th {
+    background-color: #4CAF50;
+    color: white;
+    }
+	th, td {
+    padding: 20px;
+    text-align: left;
+}
+    tr:nth-child(even) {background-color: #f2f2f2}
+}
+
+    </style>
+
+
+</head>
+
+<body>
+
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <span class="brand-logo">&nbsp;FreePL</span>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                {% if user and not user.is_anonymous %}
+                <li>Hello {{ user.get_full_name|default:user.username }}</li>
+                {% endif %}
+                <li><a href="/matches">All Matches</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/rules">Rules</a></li>
+                <li><a href="/listteams">Your Squad</a></li>
+                {% if user and not user.is_anonymous %}
+                <li> <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+<form method="POST">
+    {% csrf_token %}
+        <select id="selectNumber" class="form-control" style="display:block" name="id">
+            {% for i in matches %}
+            <option value="{{ i.id }}">{{ i.country1 }} {{ i.country2 }} {{ i.day }}</option>
+            {% endfor %}
+            </select>
+    <input type="submit"/>
+    </form>
+</div>
+<div class="container">
+<table class="table">
+            <thead>
+            <tr>
+                <th>Player Name</th>
+                <th>Country</th>
+                <th>Role</th>
+                <th>Cost</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in players %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.country }}</td>
+                <td>{{ i.role }}</td>
+
+                <td>{{ i.cost }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+            </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/static/js/materialize.min.js"></script>
+
+</body>
+</html>
