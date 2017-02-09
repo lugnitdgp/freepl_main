@@ -1,37 +1,31 @@
 Player Name,Country,Role,Cost
-Shikhar Dhawan,India,Batsman,60
-Rohit Sharma,India,Batsman,90
-Virat Kohli,India,Batsman,95
-Ajinkya Rahane,India,Batsman,75
-Manish Pandey,India,Batsman,40
-MS Dhoni,India,Wicket Keeper,65
-Ravichandran Ashwin,India,All Rounder,60
-Ravindra Jadeja,India,All Rounder,60
-Mohammed Shami,India,Bowler,50
-Axar Patel,India,All Rounder,45
-Ishant Sharma,India,Bowler,65
-Umesh Yadav,India,Bowler,50
-Gurkeerat Singh Mann,India,Batsman,40
-Rishi Dhawan,India,All Rounder,40
-Barinder Sran,India,Bowler,50
-Yuvraj Singh,India,Batsman,75
-Suresh Raina,India,Batsman,75
-Harbhajan Singh,India,Bowler,70
-Hardik Pandya,India,Batsman,40
-Bhuvneshwar Kumar,India,Bowler,55
-Ashish Nehra,India,Bowler,50
-Aaron Finch,Australia,Batsman,80
-Steven Smith,Australia,Batsman,95
-Shaun Marsh,Australia,Batsman,75
-Mitchell Marsh,Australia,All Rounder,60
-George Bailey,Australia,Batsman,85
-Glenn Maxwell,Australia,All Rounder,80
-Matthew Wade,Australia,Wicket Keeper,60
-James Faulkner,Australia,All Rounder,60
-Kane Richardson,Australia,Bowler,55
-Scott Boland,Australia,Bowler,50
-Joel Paris,Australia,Bowler,55
-John Hastings,Australia,Bowler,70
-Usman Khawaja,Australia,Batsman,60
-David Warner,Australia,Batsman,90
-Nathan Lyon,Australia,Bowler,65
+Lokesh Rahul,India,Batsman,40
+Shikhar Dhawan,India,Batsman,40
+Virat Kohli,India,Batsman,90
+MS Dhoni,India,WicketKeeper,80
+Manish Pandey,India,Batsman,60
+Kedar Jadhav,India,Batsman,60
+Yuvraj Singh,India,Batsman,70
+Ajinkya Rahane,India,Batsman,60
+Hardik Pandya,India,AllRounder,60
+Ravichandran Ashwin,India,Bowler,70
+Ravindra Jadeja,India,All Rounder,70
+Amit Mishra,India,Bowler,60
+Jasprit Bumrah,India,Bowler,60
+Bhuvneshwar Kumar,India,Bowler,60
+Umesh Yadav,India,Bowler,60
+Moeen Ali,England,Bowler,60
+Jonny Bairstow,England,WicketKeeper,65
+Jake Ball,England,Bowler,50
+Sam Billings,England,Batsman,50
+Jos Buttler,England,WicketKeeper,70
+Liam Dawson,England,AllRounder,50
+Alex Hales,England,Batsman,65
+Eoin Morgan,England,Batsman,80
+Liam Plunkett,England,Bowler,60
+Adil Rashid,England,Bowler,50
+Joe Root,England,Batsman,70
+Jason Roy,England,Batsman,60
+Ben Stokes,England,AllRounder,70
+David Willey,England,Bowler,60
+Chris Woakes,England,AllRounder,70

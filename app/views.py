@@ -141,6 +141,25 @@ def listTeams(request):
         players = PersontoPM.objects.filter(person=person, pm__match = match)
         p=[]
         for i in players:
-            p.append(i.pm.player)
+            it={}
+            it['play']=i.pm.player
+            it['bool']=i.power_player
+            p.append(it)
+
         p=list(p)
         return render(request,"listteams.html",{'players':p, 'matches': matches})
+
+@login_required
+def matchpoints(request):
+    matches = Match.objects.all()
+    if request.method == 'GET':
+        return render(request,'listteams.html',{'matches': matches})
+    elif request.method == 'POST':
+        id = request.POST['id']
+        mat=Match.objects.get(id=id)
+        
+        
+        players = PlayertoMatch.objects.filter(match=mat)
+        
+        
+        return render(request,"match_points.html",{'players':players, 'matches': matches})

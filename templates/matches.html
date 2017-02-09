@@ -1,54 +1,46 @@
 {% extends "base.html" %}
 {% load static from staticfiles %}
 {% block body %}
+    
+     
+        {% block msgblock %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">
+                      {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+        {% endblock %}
 
-<div class="container">
+        {% for i in matches %}
+        
+        <div class="col-md-6">
 
-{% block msgblock %}
-            {% if messages %}
-            {% for message in messages %}
-            <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">
-              {{ message }}
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endblock %}
-
-{% for i in matches %}
-    <div class="row">
-        <div class="s12">
             <div class="card">
+                
                 <div class="card-content">
-            <a href = "/match/{{ forloop.counter }}" class="card-title activator match_heading">Match {{ forloop.counter }}<i class="material-icons right">more_vert</i></a>
+                    <a href = "/match/{{ forloop.counter }}" class="card-title activator match_heading">Match {{ forloop.counter }}<i class="material-icons right">more_vert</i></a>
 
                     <div class="match_info">
                         <span class="nz">{{ i.country1 }}</span><span class="vs">Vs</span><span class="pak">{{ i.country2 }}</span>
 
                         <div class="date">{{ i.day }}</div>
                     </div>
-
                 </div>
-                <div class="card-reveal extra">
-                <span class="card-title match_heading"><i
-                        class="material-icons right custom_reveal">close</i></span>
-
-                    <div class="match_info_reveal">
-                        2nd ODI, {{ i.country1 }} v {{ i.country1 }} 2016<br>
-                        McLean Park, Napier, 01:00 GMT / 06:00 Local
-                    </div>
-                </div>
+                
             </div>
         </div>
-    </div>
+        
+        
+        {% endfor %}
+        
+    
+{% endblock %}
 
-{% endfor %}
-
-
-</div>
-
+{% block script %}
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="/static/js/materialize.min.js"></script>
-
 
 {% endblock %}

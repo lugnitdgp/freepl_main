@@ -26,7 +26,7 @@ class Match(models.Model):
     can_edit = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.country1 + ' vs ' + self.country2
+        return self.country1 + ' vs ' + self.country2 
 
 class Player(models.Model):
     class Meta:
@@ -49,7 +49,7 @@ class PlayertoMatch(models.Model):
     score = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.player.name + "for the match " + self.match.country1 + 'vs' + self.match.country2 + "scored : " + str(self.score)
+        return self.player.name + "for the match " + self.match.country1 + 'vs' + self.match.country2 + str(self.match.day) + "scored : " + str(self.score)
 
 class PersontoPM(models.Model):
     class Meta:

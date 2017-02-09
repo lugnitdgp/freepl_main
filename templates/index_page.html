@@ -4,16 +4,36 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta id="view" name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1">
-    <title>Background Video</title>
+    <title>freepl | Mukti</title>
     <link rel="stylesheet" type="text/css" href="/static/assets/styles.css">
+ <style>
+    .image_full{
+	display:none;
+  }
+
+ .image_mobile{
+  display:none;
+ }
+
+@media (max-width: 640px) and (min-width: 320px){
+  .image_full{
+   display:none;
+  }
+
+  .image_mobile{
+   display:block;
+  }
+}
+     </style>
 </head>
 <body>
 <div class="promo">
-    <video autoplay="autoplay" muted="muted" loop="loop">
-        <source src="/static/assets/vid.mp4" type="video/mp4">
-
+    <video autoplay="autoplay"  loop="loop" muted="muted">
+        <source src="/static/assets/vid.mp4" type="video/mp4" class="image_full">
     </video>
-
+    <div class="image_mobile"  >
+	<img src="/static/assets/ganguly.jpg" class="img-responsive" >
+    </div>	
 
     <div class="caption">
         <div class="heading">FREEPL</div>

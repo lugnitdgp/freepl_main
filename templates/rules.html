@@ -1,184 +1,111 @@
+{% extends "base.html" %}
 {% load static from staticfiles %}
-<html>
-<head>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/matches.css" media="screen,projection"/>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <title>Rules</title>
-    <style>
-        body{
-            background-color: #F3F3F3;
-        }
-
-        i.large {
-            font-size: 6rem;
-            color: #9a92ed;
-            transition: color .3s linear;
-            cursor: pointer;
-        }
-        i.large:hover{
-            color: #4e56d6;
-        }
-        .page-header{
-            display: inline;
-        }
-
-        .rules{
-            margin-bottom: 20px;
-            display: inline;
-            position: relative;
-            bottom: 30px;
-            font-size: 25px;
-        }
-
-        .card-content
-        {
-            font-size: 16px;
-        }
-        .flow-text{
-            font-family: Ubuntu,sans-serif;
-            color: #707070 !important;
-            text-indent: 2%;
-            font-weight: 300;
-        }
-
-
-
-    </style>
-
-
-</head>
-
-<body>
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <span class="brand-logo">&nbsp;FreePL</span>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                {% if user and not user.is_anonymous %}
-                <li>Hello {{ user.get_full_name|default:user.username }}</li>
-                {% endif %}
-                <li><a href="/matches">All Matches</a></li>
-                <li><a href="/leaderboard">Leaderboard</a></li>
-                <li><a href="/rules">Rules</a></li>
-                {% if user and not user.is_anonymous %}
-                <li> <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></li>
-                {% endif %}
-            </ul>
+{% block body %}
+    
+<div class="card">
+    <div class="card-content">
+        <div class="card hoverable">
+            <div class="card-content">
+                <p>This is a Fantasy Cricket League. We will be hosting matches mirroring the matches that are taking place live around the world. All you have to do is to select the team you would choose amongst the 22+ players participating in the match. You would be then allotted points on the basis of how the players actually performed</p>
+            </div>
         </div>
-    </nav>
-</div>
-<div class="container">
-    <div class="row">
-
-
-            <div class="page-header">
-                <br>
-                <i class="large material-icons">info_outline</i><div class="rules">Rules</div>
+        <div class="card hoverable">
+            <div class="card-content">
+                <p>You have to select a minimum of 4 Batsmen, 2 Bowlers, 2 All Rounders and exactly 1 wicketkeeper. You must also choose a team captain, whose end points will be doubled.</p>
             </div>
-            <div class="card">
-                <div class="card-content">
+        </div>
+        <div class="card hoverable">
+            <div class="card-content">
+                <p class="">
 
-			<div class="card hoverable">
-				<div class="card-content">
-				<p class="flow-text">This is a Fantasy Cricket League. We will be hosting matches mirroring the matches that are taking place live around the world.
-                    All you have to do is to select the team you would choose amongst the 22+ players participating in the match.
-                    You would be then allotted points on the basis of how the players actually performed</p>
-				</div>
-			</div>
-            <div class="card hoverable">
-				<div class="card-content">
-				<p class="flow-text">You have to select a minimum of 4 Batsmen, 2 Bowlers, 2 All Rounders and exactly 1 wicketkeeper. You must also choose a team captain, whose end points will be doubled.</p>
-				</div>
-			</div>
-            <div class="card hoverable">
-				<div class="card-content">
-				<p class="flow-text"><h3>Batting Points</h3>
-<table class="rulestable">
-<tr>
-<td>Base Score</td>
-<td>1 point per run.</td>
-</tr>
-<tr>
-<td>Impact Score</td>
-<td>2 points per six, -5 for a duck.</td>
-</tr>
-<tr>
-<td>Milestone Score</td>
-<td>10 points for every 25 runs scored. </td>
-</tr>
-<tr>
-<td>Pace Bonus </td>
-<td> Runs Scored – Balls faced. </td>
-</tr>
-</table>
-<h3>Bowling Points</h3>
-<table class="rulestable">
-<tr>
-<td>Base Score</td>
-<td>20 points per wicket.</td>
-</tr>
-<tr>
-<td>Impact Score</td>
-<td>1 point per dot ball, 20 points for a maiden over.</td>
-</tr>
-<tr>
-<td>Milestone Score</td>
-<td> 10 points for each subsequent wicket. </td>
-</tr>
-<tr>
-<td>Pace Bonus </td>
-<td> Balls bowled – Runs conceded. If positive, then it is doubled. </td>
-</tr>
-</table>
-<h3> Fielding Points </h3>
-<table class="rulestable">
-<tr>
-<td>Catch</td>
-<td>10 points </td>
-</tr>
-<tr>
-<td>Stumping </td>
-<td> 15 points </td>
-</tr>
-<tr>
-<td> Run Out</td>
-<td> 10 points for each player involved. </td>
-</tr>
-</table>
-<h3> Bonus Points </h3>
-<table class="rulestable">
-<tr>
-<td>Player of the Match</td>
-<td> 25 points </td>
-</tr>
-<tr>
-<td> The points of your captain gets doubled </td>
-</tr>
-</table></p>
-				</div>
-			</div>
-                    <div class="card hoverable">
-				<div class="card-content">
-				<p class="flow-text">Bring out the manager in you and play on to win prizes worth 5k+ and more!</p>
-				</div>
-			</div>
-                </div>
+                    <h4>Batting Points</h4>
+
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Base Score</td>
+                            <td>1 point per run.</td>
+                        </tr>
+                        <tr>
+                            <td>Impact Score</td>
+                            <td>2 points per six, -5 for a duck.</td>
+                        </tr>
+                        <tr>
+                            <td>Milestone Score</td>
+                            <td>10 points for every 25 runs scored. </td>
+                        </tr>
+                        <tr>
+                            <td>Pace Bonus </td>
+                            <td> Runs Scored – Balls faced. </td>
+                        </tr>
+                    </table>
+
+                    <h4>Bowling Points</h4>
+                    <table class="table table-striped">
+                    <tr>
+                       <td>Base Score</td>
+                        <td>20 points per wicket.</td>
+                    </tr>
+                    <tr>
+                        <td>Impact Score</td>
+                        <td>1 point per dot ball, 20 points for a maiden over.</td>
+                    </tr>
+                    <tr>
+                        <td>Milestone Score</td>
+                        <td> 10 points for each subsequent wicket. </td>
+                    </tr>
+                    <tr>
+                        <td>Pace Bonus </td>
+                        <td> Balls bowled – Runs conceded. If positive, then it is doubled. </td>
+                    </tr>
+                    </table>
+                    
+                    <h4> Fielding Points </h4>
+                    <table class="table table-striped">
+                    <tr>
+                        <td>Catch</td>
+                        <td>10 points </td>
+                    </tr>
+                    <tr>
+                        <td>Stumping </td>
+                        <td> 15 points </td>
+                    </tr>
+                    <tr>
+                        <td> Run Out</td>
+                        <td> 10 points for each player involved. </td>
+                    </tr>
+                    </table>
+                    
+                    <h4> Bonus Points </h4>
+                    <table class="rulestable">
+                    <tr>
+                        <td>Player of the Match</td>
+                        <td> 25 points </td>
+                    </tr>
+                    <tr>
+                        <td> The points of your captain gets doubled </td>
+                    </tr>
+                    </table>
+                </p>
             </div>
-
-
-
-
+        </div>
+        <div class="card hoverable">
+            <div class="card-content">
+                <p class="">Bring out the manager in you and play on to win prizes worth 5k+ and more!</p>
+            </div>
+        </div>
     </div>
 </div>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
 
-</body>
-</html>
+
+
+
+{% endblock %}
+
+{% block script %}
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/static/js/materialize.min.js"></script>
+
+{% endblock %}

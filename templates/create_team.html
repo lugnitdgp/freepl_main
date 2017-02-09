@@ -1,109 +1,92 @@
-{% load static from staticfiles %}
-<!DOCTYPE html>
-<html>
-<title>Freepl | Create Team</title>
-<head>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="/static/css/matches.css" media="screen,projection"/>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!--Let browser know website is optimized for mobile-->
-</head>
-<body>
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <span class="brand-logo">&nbsp;FreePL</span>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                {% if user and not user.is_anonymous %}
-                <li>Hello {{ user.get_full_name|default:user.username }}</li>
-                {% endif %}
-                <li><a href="/matches">All Matches</a></li>
-                <li><a href="/leaderboard">Leaderboard</a></li>
-                <li><a href="/rules">Rules</a></li>
-                {% if user and not user.is_anonymous %}
-                <li> <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
-</div>
-{% block msgblock %}
-            {% if messages %}
-            {% for message in messages %}
-            <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">
-              {{ message }}
-            </div>
-            {% endfor %}
-            {% endif %}
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}
+   
+      
+            {% block msgblock %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">
+                          {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
             {% endblock %}
-<form action="/match/{{ id }}" method="POST">
-    {% csrf_token %}
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Create Team</div>
-        <div class="panel-body">
-            <div style="float:right;">
-                <p>Budget:
 
-                <div id="budget">700</div>
-                </p>
-            </div>
-        </div>
+            <form action="/match/{{ id }}" method="POST">
+                {% csrf_token %}
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Create Team</div>
+                    <div class="panel-body">
+                        <div style="float:right;">
+                            <p>Budget:
 
-        <!-- Table -->
-        <table class="table">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Player Name</th>
-                <th>Country</th>
-                <th>Role</th>
-                <th>Cost</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for i in players %}
-            <tr>
-                <th scope="row"><input type="checkbox" id='cost{{ i.id }}' value="{{ i.name }}" name="sport" onclick="calc();">
-                <label for="cost{{ i.id }}"></label>
-                </th>
-                <td>{{ i.name }}</td>
-                <td>{{ i.country }}</td>
-                <td>{{ i.role }}</td>
-                <input type="hidden" name='xxx' value="{{ i.cost }}"/>
-                <td>{{ i.cost }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                            <div id="budget">700</div>
+                            </p>
+                        </div>
+                    </div>
 
-<br>
- <button type="button" onClick="butt()" class="btn btn-info btn-lg" data-toggle="modal">Choose Captain</button>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-
-                <div class="modal-body">
-
-                            <select id="selectNumber" class="form-control" name="captain">
-
-                        </select>
-
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Player Name</th>
+                            <th>Country</th>
+                            <th>Role</th>
+                            <th>Cost</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in players %}
+                        <tr>
+                            <th scope="row"><input type="checkbox" id='cost{{ i.id }}' value="{{ i.name }}" name="sport" onclick="calc();">
+                            <label for="cost{{ i.id }}"></label>
+                            </th>
+                            <td>{{ i.name }}</td>
+                            <td>{{ i.country }}</td>
+                            <td>{{ i.role }}</td>
+                            <input type="hidden" name='xxx' value="{{ i.cost }}"/>
+                            <td>{{ i.cost }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" name="submit" class="btn btn-default" value="Submit Team"/>
+
+            <br>
+             <button type="button" onClick="butt()" class="btn btn-info btn-lg" data-toggle="modal">Choose Captain</button>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                     
+                            <div class="modal-body">
+
+                                        <select id="selectNumber" class="form-control" name="captain">
+
+                                    </select>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <input type="submit" name="submit" class="btn btn-default" value="Submit Team"/>
+                            </div>
+                    
+                    </div>
                 </div>
-        </div>
-    </div>
 
 
-</form>
+            </form>
+
+     
+
+{% endblock %}
+
+{% block script %}
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/static/js/materialize.min.js"></script>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="/static/js/materialize.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
@@ -181,4 +164,4 @@
 
 </script>
 
-</body>
+{% endblock %}

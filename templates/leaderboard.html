@@ -1,130 +1,37 @@
+{% extends "base.html" %}
 {% load static from staticfiles %}
-<html>
-<head>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/static/css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="/static/css/matches.css" media="screen,projection"/>
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+{% block body %}
 
-    <title>Leaderboard</title>
-    <style>
-        body{
-            background-color: #F3F3F3;
-        }
-
-        i.large {
-            font-size: 6rem;
-            color: #9a92ed;
-            transition: color .3s linear;
-            cursor: pointer;
-        }
-        i.large:hover{
-            color: #4e56d6;
-        }
-        .page-header{
-            display: inline;
-        }
-
-        .rules{
-            margin-bottom: 20px;
-            display: inline;
-            position: relative;
-            bottom: 30px;
-            font-size: 25px;
-        }
-
-        .card-content
-        {
-            font-size: 16px;
-        }
-        .flow-text{
-            font-family: Ubuntu,sans-serif;
-            color: #707070 !important;
-            text-indent: 2%;
-            font-weight: 300;
-        }
-
-	th {
-    background-color: #4CAF50;
-    color: white;
-    }
-	th, td {
-    padding: 20px;
-    text-align: left;
-}
-    tr:nth-child(even) {background-color: #f2f2f2}
-}
-
-    </style>
-
-
-</head>
-
-<body>
-
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <span class="brand-logo">&nbsp;FreePL</span>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                {% if user and not user.is_anonymous %}
-                <li>Hello {{ user.get_full_name|default:user.username }}</li>
-                {% endif %}
-                <li><a href="/matches">All Matches</a></li>
-                <li><a href="/leaderboard">Leaderboard</a></li>
-                <li><a href="/rules">Rules</a></li>
-                {% if user and not user.is_anonymous %}
-                <li> <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></li>
-                {% endif %}
-            </ul>
+<div class="col-md-12">
+    <div class="card">
+        <div class="header">
+            <h4 class="title">Leaderboard Table</h4>
         </div>
-    </nav>
-</div>
-<div class="container">
-    <div class="row">
-
-
-            <div class="page-header">
-                <br>
-                 <img src="/static/img/img.png" alt="Smiley face" height="70" width="70"> <div class="rules">Leaderboard</div>
-            </div>
-            <div class="card">
-                <div class="card-content">
-
-			<div class="card hoverable">
-				<table>
-
-				<tr>
-					<th>rank</th>
-					<th>name</th>
-					<th>total score</th>
-
-				</tr>
+        <div class="content table-responsive table-full-width">
+            <table class="table table-striped">
+                <thead>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Total Score</th>
+                </thead>
+                <tbody>
                     {% for i in persons %}
                     <tr>
-					<td>{{ forloop.counter }}</td>
-					<td>{{ i.name }}</td>
-					<td>{{ i.total_score }}</td>
-				</tr>
-				{% endfor %}
-			</table>
-			</div>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.name }}</td>
+                        <td>{{ i.total_score }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-
-                </div>
-            </div>
-
-
-
-
+        </div>
     </div>
 </div>
-
+{% endblock %}
+{% block script %}
+<!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="/static/js/materialize.min.js"></script>
 
-</body>
-</html>
+{% endblock %}

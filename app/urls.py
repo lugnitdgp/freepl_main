@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^rules/$', views.rules , name='rules'),
     url(r'^leaderboard/$', views.leaderboard , name='leaderboard'),
     url(r'^listteams', views.listTeams , name='list_team'),
+    url(r'^matchpoints', views.matchpoints , name='matchpoints'),
 ]
