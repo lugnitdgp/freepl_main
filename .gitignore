@@ -2,7 +2,7 @@ db.sqlite3
 */__pycache__
 .venv
 *.pyc
-
+settings.py
 
 # IDE files
 .idea/*

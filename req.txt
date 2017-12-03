@@ -1,0 +1,5 @@
+Django==1.11.2
+social-auth-app-django
+python-social-auth
+django-import-export
+django-widget-tweaks

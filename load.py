@@ -10,7 +10,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'freepl_main.settings')
 #for i in Player.objects.all():
 #    i.delete()
 
-with open('indiaaus.csv') as f:
+with open('indiaeng.csv') as f:
     reader=csv.DictReader(f)
     for row in reader:
         p=(row['Player Name'].strip())
