@@ -1,6 +1,6 @@
 # FreePL
 
-**FREEPL is a online fantasy cricket game where the player gets to create a team according to the live matches going on around th world.
+**FREEPL** is a online fantasy cricket game where the player gets to create a team according to the live matches going on around th world.
 
 
 The player at the end with highest total stocks and cash wins the game.
@@ -121,8 +121,7 @@ FreePL uses the following technologies:
 + HTML/CSS/JavaScript
 + Pyhton(Django)
 
-## If you wish to contribute, please open a **new issue** before making any pull request. **Every pull request should
-have a reference to an issue.**
+## If you wish to contribute, please open a **new issue** before making any pull request. **Every pull request should have a reference to an issue.**
 
 
 ### Making your your first pull request
