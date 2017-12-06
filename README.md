@@ -121,8 +121,7 @@ FreePL uses the following technologies:
 + HTML/CSS/JavaScript
 + Pyhton(Django)
 
-## If you wish to contribute, please open a **new issue** before making any pull request. **Every pull request should
-have a reference to an issue.**
+## If you wish to contribute, please open a **new issue** before making any pull request. **Every pull request should have a reference to an issue.**
 
 
 ### Making your your first pull request
