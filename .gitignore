@@ -12,3 +12,5 @@ settings.py
 # Local configuration files
 localconf.py
 freepl_main.conf
+settings.py
+freepl_main/settings.py
