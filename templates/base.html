@@ -21,7 +21,7 @@
 
 </style>
 
-      <title>{% block title %}{% endblock %} FreePL | Mukti 2017</title>
+      <title>{% block title %}{% endblock %} FreePL | Mukti 2018</title>
 
       <!-- Bootstrap -->
       <link href="{% static "paperkit/css/bootstrap.min.css" %}" rel = "stylesheet" />
@@ -98,6 +98,7 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <div class="navbar-header">
+                          <a class="navbar-brand" href="#" id="userMenu" style="font-family:'espn'; font-size:35px; align:right;">Welcome {{ user.first_name }}</a>
                             <button type="button" class="navbar-toggle">
                                 <span class="sr-only">Toggle navigation</span>
                                 <span class="icon-bar bar1"></span>
@@ -112,11 +113,8 @@
                                     {% if user and not user.is_anonymous %}
                                     <a href="{% url 'auth:logout' %}?next={{ request.path }}">
                                        
-                                        <p>Logout{% endif %}</p>
+                                        <p><b>LOGOUT{% endif %}</b></p>
                                     </a>
-                                </li>
-                                 <li>
-                                   <img src="/static/assets/un.png">
                                 </li>
                             </ul>
                         </div>
@@ -136,7 +134,7 @@
                 <footer class="footer">
                     <div class="container-fluid">
                         <div class="copyright pull-right">
-                            &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">GNU Linux Users' Group</a>
+                            &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart" style="font-size: 23px">&hearts;</i> by <a href="http://www.nitdgplug.org" target=_blank>GNU Linux Users' Group NIT DGP</a>
                         </div>
                     </div>
                 </footer>
