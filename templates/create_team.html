@@ -19,11 +19,10 @@
                     <!-- Default panel contents -->
                     <div class="panel-heading" style="font-weight: bold ; font-size: 25px ;font-family:'Times New Roman'">CREATE TEAM</div>
                     <div class="panel-body">
-                        <div style="float:center; font-size:30px; ">
-                            
-                                <b>Budget: <div id="budget">700</div>
-                        </b>
-                            
+                        <div style="float:center; font-size:30px; ">                     
+                            <b>Budget:
+                                <div id="budget"></div>
+                            </b>        
                         </div>
                     </div>
 
@@ -41,14 +40,13 @@
                         <tbody>
                         {% for i in players %}
                         <tr>
-                            <th scope="row"><input type="checkbox" id='cost{{ i.id }}' value="{{ i.name }}" name="sport" onclick="calc();">
+                            <th scope="row"><input type="checkbox" id='cost{{ i.id }}' value="{{ i.name }}">
                             <label for="cost{{ i.id }}"></label>
                             </th>
                             <td>{{ i.name }}</td>
-                            <td>{{ i.country }}</td>
-                            <td>{{ i.role }}</td>
-                            <input type="hidden" name='xxx' value="{{ i.cost }}"/>
-                            <td>{{ i.cost }}</td>
+                            <td class="country">{{ i.country }}</td>
+                            <td class="role">{{ i.role }}</td>
+                            <td class="cost">{{ i.cost }}</td>
                         </tr>
                         {% endfor %}
                         </tbody>
@@ -95,19 +93,110 @@
 
     var favorite = [];
     var ctr = 0;
+    var budget = 700;
+    var country_ctr = {}
+    var roles_ctr = {}
+    var i = 0;
+
+    function pluralize(role) {
+        if (["Bowler", "WicketKeeper", "AllRounder"].indexOf(role) >= 0) {
+            return role + "s";
+        } else if (role == "Batsman") {
+            return "Batsmen";
+        } else {
+            return null;
+        }
+    }
+
+    // Count the initial states and set the budget
+    $("input[type=checkbox]").each(function() {
+        i += 1;
+        var cost = parseInt($(this).parent().siblings('.cost').html());
+        var country = $(this).parent().siblings('.country').html();
+        var role = $(this).parent().siblings('.role').html();
+        if (!(country in country_ctr)) {
+            country_ctr[country] = 0;
+        }
+        if (!(role in roles_ctr)) {
+            roles_ctr[role] = 0;
+        }
+        if($(this).is(':checked')) {
+            ctr += 1;
+            budget -= cost;
+            country_ctr[country] += 1;
+            roles_ctr[role] += 1;
+        }
+    });
+
+    $("#budget").html(budget);
+
+    // On change event listener
+    $("input[type=checkbox]").change(function(){
+        var cost = parseInt($(this).parent().siblings('.cost').html());
+        var country = $(this).parent().siblings('.country').html();
+        var role = $(this).parent().siblings('.role').html();
+        if($(this).is(':checked')) {
+            if (budget - cost < 0) {
+                $(this).checked = false;
+                alert("Budget Insufficient");
+            } else {
+                country_ctr[country] += 1;
+                roles_ctr[role] += 1;
+                budget -= cost;
+                ctr += 1;
+            }
+        } else {
+            country_ctr[country] -= 1;
+            roles_ctr[role] -= 1;
+            budget += cost;
+            ctr -= 1;
+        }
+        $("#budget").html(budget);
+    });
+
+
     function butt() {
 
-        if (ctr != 11) {
-            alert("Pls select 11 players");
+        var roles_criteria = false;
+        if (roles_ctr['Batsman'] >= 4 &&
+            roles_ctr['AllRounder'] >= 2 &&
+            roles_ctr['Bowler'] >= 2 &&
+            roles_ctr['WicketKeeper'] == 1) {
+
+            roles_criteria = true;
 
         }
-        else {
+
+        var temp = [];
+        for (var role in roles_ctr) {
+            if (roles_ctr[role] <= 1) {
+                temp.push(roles_ctr[role] + " " + role);
+            } else {
+                temp.push(roles_ctr[role] + " " + pluralize(role));
+            }
+        }
+        var roles_message = "Roles criteria is not fulfilled. You have selected " + temp.join(", ");
+
+        var country_criteria = true;
+        for (var country in country_ctr) {
+            if (country_ctr[country] > 6) {
+                country_criteria = false;
+            }
+        }
+
+        if (ctr != 11) {
+            alert("Please select 11 players");
+        } else if (!roles_criteria) {
+            alert(roles_message);
+        } else if (!country_criteria) {
+            alert("Country criteria is not fulfilled. You have selected more than 6 players from one country!");
+        } else {
             favorite = [];
             var select = document.getElementById("selectNumber");
             while (select.firstChild) {
                 select.removeChild(select.firstChild);
             }
-            $.each($("input[name='sport']:checked"), function () {
+            $.each($("input[type=checkbox]:checked"), function () {
                 var a = $(this).val();
                 var b = jQuery.inArray(a, favorite)
                 console.log(favorite)
@@ -134,32 +223,6 @@
             $('#myModal').modal('show')
 
         }
-    }
-    function calc() {
-        b = 700;
-        ctr = 0;
-        var cbs = document.getElementsByName('sport');
-        var cbc = document.getElementsByName('xxx');
-
-        for (var i = 0; i < cbs.length; i++) {
-            if (cbs[i].checked) {
-                var a = cbc[i].value;
-                a = parseInt(a);
-                ctr++;
-                b = b - a;
-                if (b < 0) {
-                    cbs[i].checked = false;
-                    b = b + a;
-                    alert("Budget Insufficient");
-
-
-                }
-            }
-
-        }
-        document.getElementById('budget').innerHTML = b;
-
-
     }
 
 </script>
