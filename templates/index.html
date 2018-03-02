@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FREEPL | Aavishkar</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="The official website of NIT Durgapur">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS for bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' id='compiled.css-css'  href='https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled.min.css?ver=4.4.0' type='text/css' media='all' />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+</head>
+<style>
+    .top-nav-collapse {
+    background-color: #26C6DA !important;
+    }
+
+    .navbar:not(.top-nav-collapse) {
+        background: transparent !important;
+    }
+    .animate-right{
+        position:relative;animation:animateright 0.4s;
+    }
+    @keyframes animateright{
+        from{right:-300px;opacity:0} to{right:0;opacity:1}
+    }
+    @media (max-width: 1000px) {
+        .navbar:not(.top-nav-collapse) {
+            background: #26C6DA !important;
+        }
+        .cover{
+            min-height: 600px!important;
+        }
+        .title-cent{
+            font-size: 400%!important;
+        }
+        .img1{
+            max-width: 90px!important;
+
+        }
+        .img2{
+            max-width: 50px!important;
+            /*margin-left: -15em;*/
+        }
+        .img3{
+            max-width: 5px!important;
+            /*margin-left: -27em!important;*/
+        }
+        .img4{
+            max-width: 40px!important;
+            /*margin-left: -15em;*/
+        }
+        .navbar-collapse{
+            margin: 0!important;
+        }
+    }
+    h5 {
+        letter-spacing: 3px;
+    }
+
+    .jarallax {
+        height: 1000px;
+    }
+    @media (max-width: 1200px) and (min-width: 1001px) {
+        .navbar-collapse{
+            margin-left: 30%!important;
+        }
+    }
+    @media (min-width: 1001px) and (max-width: 1025px) {
+        .jarallax {
+            height: 500px;
+        }
+    }
+    .title-cent{
+        font-family: 'Merriweather';
+        font-size: 1200%;
+        letter-spacing: 10px;
+        color:rgba(255,255,255,0.5);
+    }navbar-collapse
+</style>
+<body>
+            <!-- <a href="http://avskr.in/" target="_blank">
+                <img src="../static/images/logoavis.png" class="img1" style="margin-top: 6em;max-width: 120px;"/>
+            </a>
+            <a href="http://nitdgplug.org/" target="_blank">
+                <img src="../static/images/glug.png" class="img2" style="max-width: 80px;margin-left: 8em;margin-top: -6.2em"/>
+            </a>
+            <img src="../static/images/whiteline.png" class="img3" style="max-width: 80px;margin-top: -6em;margin-left: 12em"/>
+            <a href="http://www.nitdgp.ac.in/" target="_blank">
+                <img src="../static/images/nit.png" class="img4" style="max-width: 80px;margin-top:-6em;margin-left: 15em"/>
+            </a> -->
+    <!--Main Navigation-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" style="min-height: 120px">
+            <div class="container">
+                <a href="http://avskr.in/" target="_blank">
+                    <img src="../static/images/logoavis.png" class="img1" style="margin-top: 0em;max-width: 120px;"/>
+                </a>
+                <a href="http://nitdgplug.org/" target="_blank">
+                    <img src="../static/images/glug.png" class="img2" style="max-width: 80px"/>
+                </a>
+                <img src="../static/images/whiteline.png" class="img3" style="max-width: 10px;margin-left: 5px;margin-right: 5px"/>
+                <a href="http://www.nitdgp.ac.in/" target="_blank">
+                    <img src="../static/images/nit.png" class="img4" style="max-width: 80px;"/>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" style="margin-left:40%;width: 100%;margin-bottom: -5em" id="navbarSupportedContent-7">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="leaderboard/">Leaderboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="rules/">Rules</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://www.cricbuzz.com/" target="_blank">CricBuzz</a>
+                        </li>
+                        <li class="nav-item" href="https://github.com/lugnitdgp/freepl_main" target="_blank">
+                            <a class="nav-link" href="#">Source Code</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="view jarallax cover" data-jarallax='{"speed": 0.2}' style="min-height: 1020px;background-image: url('../static/images/1.jpg');">
+            <div class="full-bg-img rgba-black-strong">
+                <div class="container flex-center" id="clipping">
+                    
+                    <div class="row pt-0 mt-4">
+                        <div class="col-md-12 mb-4">
+                            <div class="intro-info-content text-center">
+                                <h1 class="display-2 mb-5 font-weight-bold wow fadeInDown title-cent" data-wow-delay="0.3s">
+                                    FREEPL
+                                </h1>
+                                <div class="animate-right nr-1">
+                                <h6 class="white-text">
+                                    With a total of 18,426 runs, Sachin Tendulkar has scored the most runs in ODIs
+                                </h6>
+                                </div>
+                                <div class="animate-right nr-1">
+                                <h6 class="white-text">
+                                    With a total of 534 wickets, Muttiah Muralitharan is the highest wicket-taker in ODI
+                                </h6>
+                                </div>
+                                <div class="animate-right nr-1">
+                                <h6 class="white-text">
+                                    Averaging at 67.00, Ryan ten Doeschate has the highest career average in ODI
+                                </h6>
+                                </div>
+                                <div class="animate-right nr-1">
+                                <h6 class="white-text">
+                                    Andre Russel has the highest strike rate in ODI at 130.81
+                                </h6>
+                                </div>
+                                <div class="animate-right nr-1">
+                                <h6 class="white-text">
+                                    With a total of 5122 runs, Mishbah-Ul-Haq has the most runs in an ODI carrer without a century
+                                </h6>
+                                </div>
+                                <div class="animate-right nr-1">
+                                <h6 class="white-text">
+                                    With a score of 237 not out, Martin Guptill has the highest score batting at number 1 position
+                                </h6>
+                                </div>
+                                <a class="btn btn-fb waves-effect waves-light" href="{% url 'social:begin' 'facebook' %}" role="button">
+                                <i class="fa fa-facebook left"></i> Facebook    </a>
+                                <a class="btn btn-gplus waves-effect waves-light" href="{% url 'social:begin' 'google-oauth2' %}" role="button">
+                                <i class="fa fa-google-plus left"></i> Google+
+                                </a>
+                            </div>
+                            <div align="center" style="padding-top: 5em">
+                                <a href="https://www.facebook.com/nitdgplug" style="padding: 5px"><i class="fa fa-facebook fa-2x"></i></a>
+                                <a href="https://www.instagram.com/nitdgplug/" style="padding: 5px"><i class="fa fa-instagram fa-2x"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+    <!--Main Navigation-->
+
+
+
+        <script>
+            var myIndex1 = 0;
+            carousel1();
+            function carousel1() {
+              var i1;
+              var x1 = document.getElementsByClassName("nr-1");
+              for (i1 = 0; i1 < x1.length; i1++) {
+                x1[i1].style.display = "none";  
+              }
+              myIndex1++;
+              if (myIndex1 > x1.length) {myIndex1 = 1}    
+              x1[myIndex1-1].style.display = "block";  
+              setTimeout(carousel1, 5000);    
+            }    
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js"></script>
+</body>
+</html>

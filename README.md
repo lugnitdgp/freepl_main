@@ -45,7 +45,7 @@ The player at the end with highest total stocks and cash wins the game.
 
     ```
 
-5. Copy the settings.py.example file in the freepl_main directory to settings.py
+5. Copy the settings.py.example file in the freepl_main directory to settings.py and add an arbitrary secret key in the settings.py file.
 
     ```
     cd freepl_main
@@ -75,7 +75,7 @@ The player at the end with highest total stocks and cash wins the game.
 
     + Now, go to `settings.py` and add your OAuth credentials like this:
 
-    ```python
+    ```
     SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = <client ID>
     SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = <client secret>
 
@@ -97,7 +97,7 @@ The player at the end with highest total stocks and cash wins the game.
 
     + Grab the App ID and App Secret and add them to `settings.py` likethis:
 
-    ```python
+    ```
     SOCIAL_AUTH_FACEBOOK_KEY = <app ID>
     SOCIAL_AUTH_FACEBOOK_SECRET = <app secret>
 
@@ -111,7 +111,7 @@ The player at the end with highest total stocks and cash wins the game.
 
 	```
 
-	Then for adding matches first execute pop1.py then load.py to load the .csv file using:
+	Then for adding matches first execute load.py THEN pop1.py to load the .csv file using:
 
 	 ```
 	 exec(open("FILE_NAME.py").read())
@@ -135,6 +135,7 @@ The player at the end with highest total stocks and cash wins the game.
     ```
 
 11. Open `http://localhost:8000` in your browser. (Opening `http://127.0.0.1:8000` will cause problems with Social Login)
+
 
 ## For contributors
 
