@@ -44,8 +44,8 @@ class PlayertoMatch(models.Model):
     class Meta:
         db_table = 'PlayertoMatch'
 
-    match = models.ForeignKey(Match)
-    player = models.ForeignKey(Player)
+    match = models.ForeignKey(Match,on_delete=models.CASCADE)
+    player = models.ForeignKey(Player,on_delete=models.CASCADE)
     score = models.IntegerField(default=0)
 
     def __str__(self):
@@ -55,8 +55,8 @@ class PersontoPM(models.Model):
     class Meta:
         db_table = 'person_PM'
 
-    person = models.ForeignKey(Person)
-    pm = models.ForeignKey(PlayertoMatch)
+    person = models.ForeignKey(Person,on_delete=models.CASCADE)
+    pm = models.ForeignKey(PlayertoMatch,on_delete=models.CASCADE)
     power_player = models.BooleanField(default=False)
     score = models.IntegerField(default=0)
 

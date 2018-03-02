@@ -23,12 +23,17 @@ def fetch_match():
 			break
 
 def create_squad(match):
-	file = open ("scorecard.txt","w+")
+	file = open ("playerlist.txt","w")
 	comment=c.commentary(match['id'])
 	for i in range (2,4):
-		#print (comment['commentary'][i])
+		#get the squad list of both the teams in the dic keyword commentray
 		comm=comment['commentary'][i]
-		print (comm)
-	#print (json.dumps((comment),indent=4))
-	#print ("\n",match,"\n")
+		new_comm = re.split(',|:',str(comm))
+		print (len(new_comm))
+		for player in new_comm:
+			file.write(str(player)+"\n")
+	file.close()
+	#Write the data in a CSV file for easier import.
+
+
 fetch_match()

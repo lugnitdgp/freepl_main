@@ -53,7 +53,7 @@ def create_team(request,id):
         all_players.append(i)
     for i in Player.objects.filter(country = match.country2):
         all_players.append(i)
-    print (match.country1)
+    #print (match.country1)
     person = Person.objects.get(user_id = request.user.pk)
     if request.method == 'GET':
         if len(PersontoPM.objects.filter(person=person, pm__match=match))!=0:
@@ -79,6 +79,7 @@ def create_team(request,id):
         for i in players:
             p=Player.objects.get(name=i)
             player_class.append(p)
+            print (player_class)
             money+=p.cost
             if p.role == 'Batsman': bats+=1
             elif p.role == 'AllRounder': allr+=1
@@ -109,7 +110,8 @@ def create_team(request,id):
         for i in person2p2m:
             i.delete()
         for i in player_class:
-            m=PlayertoMatch.objects.get(match=match, player=i)
+            print (i)
+            m=PlayertoMatch.objects.get(match=match, player=i)            
             if i.name == captain:
                 val=True
             else:
@@ -136,7 +138,7 @@ def listTeams(request):
     elif request.method == 'POST':
         id = request.POST['id']
         match=Match.objects.get(id=id)
-        print (match.country1)
+        #print (match.country1)
         person = Person.objects.get(user_id = request.user.pk)
         players = PersontoPM.objects.filter(person=person, pm__match = match)
         p=[]

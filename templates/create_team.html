@@ -40,7 +40,7 @@
                         <tbody>
                         {% for i in players %}
                         <tr>
-                            <th scope="row"><input type="checkbox" id='cost{{ i.id }}' value="{{ i.name }}">
+                            <th scope="row"><input type="checkbox" id='cost{{ i.id }}' value="{{ i.name }}" name="sport">
                             <label for="cost{{ i.id }}"></label>
                             </th>
                             <td>{{ i.name }}</td>
@@ -55,7 +55,7 @@
 
             <br>
              <button type="button" onClick="butt()" class="btn btn-info btn-lg" data-toggle="modal">Choose Captain</button>
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                      
                             <div class="modal-body">
@@ -91,7 +91,7 @@
 <script type="text/javascript">
 
 
-    var favorite = [];
+    
     var ctr = 0;
     var budget = 700;
     var country_ctr = {}
@@ -154,6 +154,7 @@
         $("#budget").html(budget);
     });
 
+    var favorite = [];
 
     function butt() {
 
@@ -199,11 +200,12 @@
             $.each($("input[type=checkbox]:checked"), function () {
                 var a = $(this).val();
                 var b = jQuery.inArray(a, favorite)
-                console.log(favorite)
+                
                 if (parseInt(b) < 0) {
                     favorite.push(a);
 
                 }
+                console.log(favorite)
                 var select = document.getElementById("selectNumber");
                 while (select.firstChild) {
                     select.removeChild(select.firstChild);
