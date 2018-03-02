@@ -103,6 +103,7 @@ The player at the end with highest total stocks and cash wins the game.
 
     ```
 
+<<<<<<< HEAD
 
 9. Open the python shell using:
 
@@ -126,6 +127,9 @@ The player at the end with highest total stocks and cash wins the game.
 	 ```
 
 10.  Migrate your database and run the Django Development Server.
+=======
+9.  Migrate your database and run the Django Development Server.
+>>>>>>> e553a185c36ef176706aaa95e191f8b9b5ee878e
 
     ```
     ./manage.py makemigrations
@@ -134,7 +138,11 @@ The player at the end with highest total stocks and cash wins the game.
 
     ```
 
+<<<<<<< HEAD
 11. Open `http://localhost:8000` in your browser. (Opening `http://127.0.0.1:8000` will cause problems with Social Login)
+=======
+10. Open `http://localhost:8000` in your browser. (Opening `http://127.0.0.1:8000` will cause problems with Social Login)
+>>>>>>> e553a185c36ef176706aaa95e191f8b9b5ee878e
 
 ## For contributors
 

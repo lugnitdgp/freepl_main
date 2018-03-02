@@ -32,7 +32,7 @@ def index(request):
     user = request.user
     if user.is_authenticated():
         return HttpResponseRedirect('/matches')
-    return render(request, 'index_page.html', {})
+    return render(request, 'index.html', {})
 
 @login_required
 def matches(request):
