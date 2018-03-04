@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block body %}
-   
-      
+
+
             {% block msgblock %}
                         {% if messages %}
                         {% for message in messages %}
@@ -19,10 +19,10 @@
                     <!-- Default panel contents -->
                     <div class="panel-heading" style="font-weight: bold ; font-size: 25px ;font-family:'Lato'">CREATE TEAM</div>
                     <div class="panel-body">
-                        <div style="float:center; font-size:30px; ">                     
+                        <div style="float:center; font-size:30px; ">
                             <b>Budget:
                                 <div id="budget"></div>
-                            </b>        
+                            </b>
                         </div>
                     </div>
 
@@ -57,7 +57,7 @@
              <button type="button" onClick="butt()" class="btn btn-info btn-lg" data-toggle="modal">Choose Captain</button>
                 <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
-                     
+
                             <div class="modal-body">
 
                                         <select id="selectNumber" class="form-control" name="captain">
@@ -69,14 +69,14 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 <input type="submit" name="submit" class="btn btn-default" value="Submit Team"/>
                             </div>
-                    
+
                     </div>
                 </div>
 
 
             </form>
 
-     
+
 
 {% endblock %}
 
@@ -137,7 +137,7 @@
         var role = $(this).parent().siblings('.role').html();
         if($(this).is(':checked')) {
             if (budget - cost < 0) {
-                $(this).checked = false;
+                $(this).prop('checked', false);
                 alert("Budget Insufficient");
             } else {
                 country_ctr[country] += 1;
