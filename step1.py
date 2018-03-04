@@ -5,7 +5,7 @@ import django
 django.setup()
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'freepl_main.settings')
-# to run this file, do python3 manage.py shell and then do exec(open("pop1.py").read())
+# to run this file, do python3 manage.py shell and then do exec(open("step1.py").read())
 
 #for i in Player.objects.all():
 #    i.delete()

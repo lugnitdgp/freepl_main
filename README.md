@@ -103,15 +103,23 @@ The player at the end with highest total stocks and cash wins the game.
 
     ```
 
+9.  Migrate your database and run the Django Development Server.
 
-9. Open the python shell using:
+    ```
+    ./manage.py makemigrations
+    ./manage.py migrate
+    ./manage.py runserver
+    
+    ```
+
+10. Open the python shell (preferably in another terminal) using:
 
 	```
 	python manage.py shell
 
 	```
 
-	Then for adding matches first execute load.py THEN pop1.py to load the .csv file using:
+	Then for adding matches first execute step1.py THEN step2(...).py to load the .csv (which should be made as in the repository) file using:
 
 	 ```
 	 exec(open("FILE_NAME.py").read())
@@ -125,14 +133,7 @@ The player at the end with highest total stocks and cash wins the game.
 
 	 ```
 
-10.  Migrate your database and run the Django Development Server.
 
-    ```
-    ./manage.py makemigrations
-    ./manage.py migrate
-    ./manage.py runserver
-
-    ```
 
 11. Open `http://localhost:8000` in your browser. (Opening `http://127.0.0.1:8000` will cause problems with Social Login)
 
