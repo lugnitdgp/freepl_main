@@ -20,8 +20,8 @@ m=Match(country1=c1,country2=c2,day=date1,can_edit=True)
 m.save()
 
 for i in Player.objects.all():
-    if i.country==c1 or i.country==c2:
-        p=PlayertoMatch(match=m,player=i)
-        p.save()
-
-
+	for j in Match.objects.all():
+		if j.day==date1:
+	   		if i.country==c1 or i.country==c2:
+	   			p=PlayertoMatch(match=m,player=i)
+	   			p.save()
