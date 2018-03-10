@@ -81,6 +81,7 @@ def create_team(request,id):
             player_class.append(p)
             print (player_class)
             money+=p.cost
+            print (money)
             if p.role == 'Batsman': bats+=1
             elif p.role == 'AllRounder': allr+=1
             elif p.role == 'WicketKeeper': wk+=1
