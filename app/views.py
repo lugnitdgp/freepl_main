@@ -81,6 +81,7 @@ def create_team(request,id):
             player_class.append(p)
             print (player_class)
             money+=p.cost
+            print (money)
             if p.role == 'Batsman': bats+=1
             elif p.role == 'AllRounder': allr+=1
             elif p.role == 'WicketKeeper': wk+=1
@@ -102,7 +103,7 @@ def create_team(request,id):
         elif c1>6 or c2>6:
             messages.error(request, "You can choose only a maximum of 6 players from one country")
             return render(request,'create_team.html',{'players': all_players, 'id':id })
-        elif money>700:
+        elif money>1000:
             messages.error(request,"Dude. Don't flatter yourself. You aren't that smart.")
             return render(request,'create_team.html',{'players': all_players, 'id':id })
         #remove all existing entries
