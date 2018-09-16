@@ -5,8 +5,15 @@ from django.contrib.auth import models
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from app.models import Person, Player, PlayertoMatch, PersontoPM, Match
+from app.serializers import *
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 # Create your views here.
+
+class leaderboardViewSet(ListAPIView):
+    queryset = Person.objects.all().order_by('-total_score')
+    serializer_class = leaderboardserializer
+
 def save_profile(backend, user, response, *args, **kwargs):
     if backend.name == 'facebook':
         profile = user
@@ -127,6 +134,9 @@ def leaderboard(request):
     persons = list(Person.objects.all())
     persons.sort(key = lambda x : x.total_score, reverse=True)
     return render(request,'leaderboard.html',{'persons': persons})
+
+
+
 
 def rules(request):
     return render(request,'rules.html',{})

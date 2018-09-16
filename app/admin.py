@@ -10,6 +10,11 @@ class PlayerResource(resources.ModelResource):
     class Meta:
         model = Player
 
+class leaderboardmodeladmin(admin.ModelAdmin):
+	list_display = ['_name','_email','_score']
+
 class PlayerAdmin(ImportExportModelAdmin):
     resource_class = PlayerResource
     pass
+
+#admin.site.register(Person,leaderboardmodeladmin)
