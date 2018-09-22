@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, render_to_response, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib import messages
 from django.contrib.auth import models
 from django.contrib.auth import authenticate, login, logout
@@ -7,12 +7,26 @@ from django.contrib.auth.decorators import login_required
 from app.models import Person, Player, PlayertoMatch, PersontoPM, Match
 from app.serializers import *
 from rest_framework.generics import ListAPIView, RetrieveAPIView
+import json
+from django.core import serializers
 
 # Create your views here.
 
-class leaderboardViewSet(ListAPIView):
+# class leaderboardViewSet(ListAPIView):
+#     queryset = Person.objects.all().order_by('-total_score')
+#     serializer_class = leaderboardserializer
+
+def leaderboard_api(req):
     queryset = Person.objects.all().order_by('-total_score')
-    serializer_class = leaderboardserializer
+    json_data = serializers.serialize('json',queryset)
+    ddict = json.loads(json_data)
+    items=[]
+    for i in ddict:
+        json_data = json.dumps(i.get("fields"))
+        items.append(json_data)
+    items=json.dumps(items)
+    #return JsonResponse(json_data, safe=False)
+    return HttpResponse(items, content_type='application/json')
 
 def save_profile(backend, user, response, *args, **kwargs):
     if backend.name == 'facebook':
