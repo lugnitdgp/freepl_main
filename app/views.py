@@ -22,6 +22,7 @@ def save_profile(backend, user, response, *args, **kwargs):
         except:
             person = Person(user=profile)
             person.email = user.email
+            person.user_name = user.username
             person.name = response.get('name')
             person.save()
 
@@ -32,6 +33,7 @@ def save_profile(backend, user, response, *args, **kwargs):
         except:
             person = Person(user=profile)
             person.email = user.email
+            person.user_name = user.username
             person.name = response.get('name')['givenName'] + " " + response.get('name')['familyName']
             person.save()
 

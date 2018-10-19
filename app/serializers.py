@@ -7,4 +7,4 @@ class leaderboardserializer(serializers.ModelSerializer):
 	class Meta:
 
 		model = Person
-		fields = ('name', 'email', 'total_score') 
+		fields = ('user_name','name', 'email', 'total_score') 

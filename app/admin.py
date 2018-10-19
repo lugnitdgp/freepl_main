@@ -11,7 +11,7 @@ class PlayerResource(resources.ModelResource):
         model = Player
 
 class leaderboardmodeladmin(admin.ModelAdmin):
-	list_display = ['_name','_email','_score']
+	list_display = ['_username','_name','_email','_score']
 
 class PlayerAdmin(ImportExportModelAdmin):
     resource_class = PlayerResource

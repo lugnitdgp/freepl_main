@@ -9,12 +9,17 @@ class Person(models.Model):
         db_table = 'person'
 
     user = models.OneToOneField(User)
+    user_name = models.CharField(max_length=255,default="")
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255,default="",unique = True)
     total_score = models.IntegerField(default=0)
 
+
     def __str__(self):
         return self.user.username
+
+    def _username(self):
+        return self.user_name
 
     def _name(self):
         return self.name
