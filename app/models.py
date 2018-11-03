@@ -11,7 +11,7 @@ class Person(models.Model):
     user = models.OneToOneField(User)
     user_name = models.CharField(max_length=255,default="")
     name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255,default="",unique = True)
+    email = models.CharField(max_length=255,default="")
     total_score = models.IntegerField(default=0)
 
 
@@ -27,8 +27,8 @@ class Person(models.Model):
     def _email(self):
         return self.email
 
-    def _total_score(self):
-        return self.score
+    def _score(self):
+        return self.total_score
 
 class Match(models.Model):
     class Meta:

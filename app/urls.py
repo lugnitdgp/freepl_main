@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^leaderboard/$', views.leaderboard , name='leaderboard'),
     url(r'^listteams', views.listTeams , name='list_team'),
     url(r'^matchpoints', views.matchpoints , name='matchpoints'),
-    url(r'^api/leaderboard$',leaderboardViewSet.as_view(), name='view-leaderboard'),
+    url(r'^api/scoreboard$',leaderboardViewSet.as_view(), name='view-leaderboard'),
 ]
