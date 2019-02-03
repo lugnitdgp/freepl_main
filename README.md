@@ -1,6 +1,6 @@
 # FreePL
 
-**FREEPL** is a online fantasy cricket game where the player gets to create a team according to the live matches going on around th world.
+**FREEPL** is a online fantasy cricket game where the player gets to create a team according to the live matches going on around the world.
 
 
 The player at the end with highest total stocks and cash wins the game.
