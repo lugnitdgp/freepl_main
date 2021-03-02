@@ -20,10 +20,11 @@ from django.contrib import admin
 admin.site.site_header = 'FREEPL | Aavishkar 2.0'
 admin.site.site_title = 'FREEPL | Aavishkar 2.0'
 
+app_name='freepl'
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^', include('app.urls')),
-    url('', include('social.apps.django_app.urls', namespace='social')),
-    url('', include('django.contrib.auth.urls', namespace='auth')),
+    url('', include(('social.apps.django_app.urls','social'), namespace='social')),
+    url('', include(('django.contrib.auth.urls','auth'), namespace='auth')),
     url(r'^api-auth/', include('rest_framework.urls')),
 ]

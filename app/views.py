@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response, get_object_or_404
+from django.shortcuts import render, redirect,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import models
@@ -39,7 +39,7 @@ def save_profile(backend, user, response, *args, **kwargs):
 
 def index(request):
     user = request.user
-    if user.is_authenticated():
+    if user.is_authenticated:
         return HttpResponseRedirect('/matches')
     return render(request, 'index.html', {})
 
