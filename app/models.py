@@ -8,7 +8,7 @@ class Person(models.Model):
     class Meta:
         db_table = 'person'
 
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     user_name = models.CharField(max_length=255,default="")
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255,default="")

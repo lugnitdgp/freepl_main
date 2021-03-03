@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response, get_object_or_404
+from django.shortcuts import render, redirect,get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import models
@@ -16,30 +16,26 @@ class leaderboardViewSet(ListAPIView):
 
 def save_profile(backend, user, response, *args, **kwargs):
     if backend.name == 'facebook':
-        profile = user
-        try:
-            person = Person.objects.get(user=profile)
-        except:
-            person = Person(user=profile)
-            person.email = user.email
-            person.user_name = user.username
+        person= Person.objects.filter(user=user).first()
+        if not person:
+            person=Person(user=user)
+            person.email=user.email
+            person.user_name=user.username
             person.name = response.get('name')
             person.save()
 
     elif backend.name == 'google-oauth2':
-        profile = user
-        try:
-            person = Person.objects.get(user=profile)
-        except:
-            person = Person(user=profile)
-            person.email = user.email
-            person.user_name = user.username
-            person.name = response.get('name')['givenName'] + " " + response.get('name')['familyName']
+        person= Person.objects.filter(user=user).first()
+        if not person:
+            person=Person(user=user)
+            person.email=user.email
+            person.user_name=user.username
+            person.name = response.get('name')
             person.save()
-
+       
 def index(request):
     user = request.user
-    if user.is_authenticated():
+    if user.is_authenticated:
         return HttpResponseRedirect('/matches')
     return render(request, 'index.html', {})
 
@@ -149,20 +145,24 @@ def listTeams(request):
     if request.method == 'GET':
         return render(request,'listteams.html',{'matches': matches})
     elif request.method == 'POST':
-        id = request.POST['id']
-        match=Match.objects.get(id=id)
-        #print (match.country1)
-        person = Person.objects.get(user_id = request.user.pk)
-        players = PersontoPM.objects.filter(person=person, pm__match = match)
-        p=[]
-        for i in players:
-            it={}
-            it['play']=i.pm.player
-            it['bool']=i.power_player
-            p.append(it)
+        id = request.POST.get('id')
+        try:
+            match=Match.objects.get(id=id)
+            #print (match.country1)
+            person = Person.objects.get(user_id = request.user.pk)
+            players = PersontoPM.objects.filter(person=person, pm__match = match)
+            p=[]
+            for i in players:
+                it={}
+                it['play']=i.pm.player
+                it['bool']=i.power_player
+                p.append(it)
 
-        p=list(p)
-        return render(request,"listteams.html",{'players':p, 'matches': matches})
+            p=list(p)
+            return render(request,"listteams.html",{'players':p, 'matches': matches})
+        except:
+            p=[]
+            return render(request,"listteams.html",{'players':p, 'matches': matches})
 
 @login_required
 def matchpoints(request):
